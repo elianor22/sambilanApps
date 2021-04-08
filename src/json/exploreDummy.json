@@ -1,0 +1,33 @@
+{
+   "category":[
+        {"id":1,"category":"Cleaning Services" },
+        {"id":2,"category":"Nanny Services"},
+        {"id":3,"category":"Guard Services"}
+   ],
+    "clean":[
+    {"id":1,"title":"Best Services","name":"Tiffany Gianelli","type":"Cleaning Services", "rating":5,"imageUrl":"https://images.pexels.com/photos/209271/pexels-photo-209271.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"},
+    {"id":2,"title":"Best Services","name":"Dodie Turbard","type":"Cleaning Services", "rating":4,"imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkIa17Ay3GDpamld82FJ3fPHjNAqrAuAu9pA&usqp=CAU"},
+    {"id":3,"title":"Best Services","name":"Prentiss Matthiae","type":"Cleaning Services", "rating":4,"imageUrl":"https://2.bp.blogspot.com/-KC1W2OyqV98/Wo6PbDRpQWI/AAAAAAAAAlw/ZKCK-OYarQwGZWg4ewELI3LTRn5RG8P4wCK4BGAYYCw/s1600/maid-cleaning-services-nyc.jpg"},
+    {"id":4,"title":"Best Services","name":"Milly Dragoe","type":"Cleaning Services", "rating":5,"imageUrl":"http://www.ezservices.co.id/wp-content/uploads/2017/09/EZ-services-penyedia-jasa-cleaning-service-di-jakarta-1-1.jpg"},
+    {"id":5,"title":"Best Services","name":"Tiffany Gianelli","type":"Cleaning Services", "rating":5,"imageUrl":"https://images.pexels.com/photos/209271/pexels-photo-209271.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"},
+    {"id":6,"title":"Best Services","name":"Dodie Turbard","type":"Cleaning Services", "rating":4,"imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkIa17Ay3GDpamld82FJ3fPHjNAqrAuAu9pA&usqp=CAU"},
+    {"id":7,"title":"Best Services","name":"Prentiss Matthiae","type":"Cleaning Services", "rating":4,"imageUrl":"https://2.bp.blogspot.com/-KC1W2OyqV98/Wo6PbDRpQWI/AAAAAAAAAlw/ZKCK-OYarQwGZWg4ewELI3LTRn5RG8P4wCK4BGAYYCw/s1600/maid-cleaning-services-nyc.jpg"},
+    {"id":8,"title":"Best Services","name":"Milly Dragoe","type":"Cleaning Services", "rating":5,"imageUrl":"http://www.ezservices.co.id/wp-content/uploads/2017/09/EZ-services-penyedia-jasa-cleaning-service-di-jakarta-1-1.jpg"},
+    {"id":9,"title":"Best Services","name":"Milly Dragoe","type":"Cleaning Services", "rating":5,"imageUrl":"http://www.ezservices.co.id/wp-content/uploads/2017/09/EZ-services-penyedia-jasa-cleaning-service-di-jakarta-1-1.jpg"},
+    {"id":10,"title":"Best Services","name":"Milly Dragoe","type":"Cleaning Services", "rating":5,"imageUrl":"http://www.ezservices.co.id/wp-content/uploads/2017/09/EZ-services-penyedia-jasa-cleaning-service-di-jakarta-1-1.jpg"}
+    ],
+"nanny":[
+    {"id":1,"name":"Tiffany Gianelli","type":"Babby Sitter","rating":5,"imageUrl":"https://cdn.popmama.com/content-images/post/20200219/babysitter-with-asian-child-reading-inside-small-6fe57dc08d7056fd322e8f255181eee8_800x420.jpg"},
+    {"id":2,"name":"Dodie Turbard","type":"Nanny","rating":4,"imageUrl":"https://static.dw.com/image/17466828_303.jpg"},
+    {"id":3,"name":"Prentiss Matthiae","type":"Nurse","rating":4,"imageUrl":"https://media.nurse.org/cache/b6/53/b6532ae191a90b032909b0964307d60d@2x.webp"},
+    {"id":4,"name":"Milly Dragoe","type":"Babby Sitter","rating":5,"imageUrl":"https://cdn-2.tstatic.net/makassar/foto/bank/images/maria-ozawa-alias-miyabi-artis-panas-jepang-diperiksa-3-jam-imigrasi-bali-ternyata-ini-masalahnya_20181107_123332.jpg"}
+    ],
+"guard":[
+    {"id":1,"name":"Tiffany Gianelli","type":"Guard Services","rating":4,"imageUrl":"https://st.depositphotos.com/1010613/2705/i/600/depositphotos_27055071-stock-photo-portrait-of-male-body-guard.jpg"},
+    {"id":2,"name":"Pasukan Tamvan","type":"Guard Services","rating":5,"imageUrl":"https://guard88.com/images/guard2.jpg"},
+    {"id":3,"name":"Prentiss Matthiae","type":"Guard Services","rating":5,"imageUrl":"https://ofiskita.com///laravel-filemanager/photos/shares/Artikel%20-%20Information%20Technology/Juli%202019/16%20Mei%202019%20-%20Ngga%20Cuma%20Seleb,%20Anda%20Juga%20Bisa%20Sewa%20Bodyguard%20di%20myguard.jpg"},
+    {"id":4,"name":"Milly Dragoe","type":"Guard Services","rating":5,"imageUrl":"https://cdn0-production-images-kly.akamaized.net/Mkxh2JukNtFZ6mcOo-eBAqc-rtk=/640x480/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/1572433/original/019744500_1492677756-bodyguard-247682_1920.jpg"}
+   ]
+
+
+}
