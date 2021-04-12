@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, FlatList, Alert} from 'react-native';
+import {View, Text, FlatList, Alert, Touchable, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import axios from 'axios';
 
@@ -12,14 +13,23 @@ import SearchBar from '../../components/searchBar/SearchBar';
 import exploreDummy from '../../json/exploreDummy.json';
 
 
-export default function ExploreScreen() {
-  const [endpoint, setEndpoint] = useState('user');
-  const [data, setData] = useState(exploreDummy.clean);
-  const [date, setDate] = useState(null);
 
-console.log(data);
-  const BASE_URL = 'https://dummyapi.io/data/api';
-  const APP_ID = '606dee664d17310528ac843d';
+
+
+
+
+export default function ExploreScreen({route,navigation}) {
+
+const [data] = useState(route.params)
+
+console.log(data.clean);
+
+  // const [endpoint, setEndpoint] = useState('user');
+  // const [data, setData] = useState(exploreDummy.clean);
+  // const [date, setDate] = useState(null);
+
+  // const BASE_URL = 'https://dummyapi.io/data/api';
+  // const APP_ID = '606dee664d17310528ac843d';
 
   // useEffect(() => {
   //   axios
@@ -31,22 +41,21 @@ console.log(data);
   //   };
   // }, []);
 
-  const handlerCategory = (title) => {
-    const {category} = title
-    const data = category 
+  // const handlerCategory = (title) => {
+  //   const {category} = title
+  //   const data = category 
 
-    if(data === 'Cleaning Services'){
-      setData(exploreDummy.clean)
-      console.log('tipe',data);
-    }else if (data === 'Nanny Services') {
-      setData(exploreDummy.nanny);
-    }else{
-      setData(exploreDummy.guard);
-    }
+  //   if(data === 'Cleaning Services'){
+  //     setData(exploreDummy.clean)
+  //   }else if (data === 'Nanny Services') {
+  //     setData(exploreDummy.nanny);
+  //   }else{
+  //     setData(exploreDummy.guard);
+  //   }
       
-  //  setData(exploreDummy.nanny)
+  // //  setData(exploreDummy.nanny)
 
-  };
+  // };
 
   const clickTest = item => {
     Alert.alert( item.name, item.type);
@@ -56,37 +65,51 @@ console.log(data);
     const {name, type, rating, title, imageUrl} = item;
     return (
       <>
-        <CardExplore
-          name={name}
-          type={type}
-          rating={rating}
-          imageUrl={imageUrl}
-          title={title}
-          onPress={() => clickTest(item)}
-        />
+        <TouchableOpacity 
+        // onPress={() => clickTest(item)}
+        >
+          <View style={{backgroundColor:'white'}}>
+            <CardExplore
+              name={name}
+              type={type}
+              rating={rating}
+              imageUrl={imageUrl}
+              title={title}
+            />
+          </View>
+        </TouchableOpacity>
       </>
     );
   };
 
+ 
+
   return (
     <View style={styles.container}>
-      <SearchBar />
+      <View style={styles.header}>
+        <TouchableOpacity onPress={()=>navigation.goBack()}>
+          <Icon name="arrow-back" style={{fontSize: 35, color: 'white'}} />
+        </TouchableOpacity>
+        <SearchBar />
+      </View>
 
-      <View>
+      {/* <View>
         <CategoryOutline
           title={exploreDummy.category}
-          onPress={(title)=>handlerCategory(title)}
+          onPress={title => handlerCategory(title)}
         />
-      </View>
+      </View> */}
       <View style={styles.content}>
         <FlatList
-          data={data}
+          data={data.clean}
           renderItem={renderItem}
           keyExtractor={item => item.id}
           numColumns={2}
-          showsVerticalScrollIndicator={false}
         />
+
+        {/* <Text>Title: {JSON.stringify(route)} </Text> */}
       </View>
     </View>
   );
 }
+

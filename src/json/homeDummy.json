@@ -1,27 +1,39 @@
 {
     "categoryList":[
-        {"category":"Cleaning Services", "imageUrl":"https://image.freepik.com/free-vector/cleaning-staff-with-cleaning-equipment-profession-staff-woman-man-cleaning-window-illustration_1284-53009.jpg"},
-        {"category":"Nanny Services", "imageUrl":"https://image.freepik.com/free-vector/nanny-concept-icons-set_1284-19106.jpg"},
-        {"category":"Guard Services", "imageUrl":"https://image.freepik.com/free-vector/bodyguard_23-2147513438.jpg"}
+        {"categoryType":"Cleaning Services", "imageUrl":"https://image.freepik.com/free-vector/cleaning-staff-with-cleaning-equipment-profession-staff-woman-man-cleaning-window-illustration_1284-53009.jpg",
+             "clean":[
+                    {"id":1,"title":"Best Services","name":"Tiffany Gianelli","type":"Cleaning Services", "rating":5,"imageUrl":"https://images.pexels.com/photos/209271/pexels-photo-209271.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"},
+                    {"id":2,"title":"Best Services","name":"Dodie Turbard","type":"Cleaning Services", "rating":4,"imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkIa17Ay3GDpamld82FJ3fPHjNAqrAuAu9pA&usqp=CAU"},
+                    {"id":3,"title":"Best Services","name":"Prentiss Matthiae","type":"Cleaning Services", "rating":4,"imageUrl":"https://2.bp.blogspot.com/-KC1W2OyqV98/Wo6PbDRpQWI/AAAAAAAAAlw/ZKCK-OYarQwGZWg4ewELI3LTRn5RG8P4wCK4BGAYYCw/s1600/maid-cleaning-services-nyc.jpg"},
+                    {"id":4,"title":"Best Services","name":"Milly Dragoe","type":"Cleaning Services", "rating":5,"imageUrl":"http://www.ezservices.co.id/wp-content/uploads/2017/09/EZ-services-penyedia-jasa-cleaning-service-di-jakarta-1-1.jpg"},
+                    {"id":5,"title":"Best Services","name":"Tiffany Gianelli","type":"Cleaning Services", "rating":5,"imageUrl":"https://images.pexels.com/photos/209271/pexels-photo-209271.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"},
+                    {"id":6,"title":"Best Services","name":"Dodie Turbard","type":"Cleaning Services", "rating":4,"imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkIa17Ay3GDpamld82FJ3fPHjNAqrAuAu9pA&usqp=CAU"},
+                    {"id":7,"title":"Best Services","name":"Prentiss Matthiae","type":"Cleaning Services", "rating":4,"imageUrl":"https://2.bp.blogspot.com/-KC1W2OyqV98/Wo6PbDRpQWI/AAAAAAAAAlw/ZKCK-OYarQwGZWg4ewELI3LTRn5RG8P4wCK4BGAYYCw/s1600/maid-cleaning-services-nyc.jpg"},
+                    {"id":8,"title":"Best Services","name":"Milly Dragoe","type":"Cleaning Services", "rating":5,"imageUrl":"http://www.ezservices.co.id/wp-content/uploads/2017/09/EZ-services-penyedia-jasa-cleaning-service-di-jakarta-1-1.jpg"},
+                    {"id":9,"title":"Best Services","name":"Milly Dragoe","type":"Cleaning Services", "rating":5,"imageUrl":"http://www.ezservices.co.id/wp-content/uploads/2017/09/EZ-services-penyedia-jasa-cleaning-service-di-jakarta-1-1.jpg"},
+                    {"id":10,"title":"Best Services","name":"Milly Dragoe","type":"Cleaning Services", "rating":5,"imageUrl":"http://www.ezservices.co.id/wp-content/uploads/2017/09/EZ-services-penyedia-jasa-cleaning-service-di-jakarta-1-1.jpg"}
+                    ]},
+        {"categoryType":"Nanny Services", "imageUrl":"https://image.freepik.com/free-vector/nanny-concept-icons-set_1284-19106.jpg"},
+        {"categoryType":"Guard Services", "imageUrl":"https://image.freepik.com/free-vector/bodyguard_23-2147513438.jpg"}
     ],
     
     "clean":[
-    {"id":1,"name":"Tiffany Gianelli","type":"Cleaning Services", "rating":5},
-    {"id":2,"name":"Dodie Turbard","type":"Cleaning Services", "rating":4},
-    {"id":3,"name":"Prentiss Matthiae","type":"Cleaning Services", "rating":4},
-    {"id":4,"name":"Milly Dragoe","type":"Cleaning Services", "rating":5}
+    {"id":11,"name":"Tiffany Gianelli","type":"Cleaning Services", "rating":5},
+    {"id":12,"name":"Dodie Turbard","type":"Cleaning Services", "rating":4},
+    {"id":13,"name":"Prentiss Matthiae","type":"Cleaning Services", "rating":4},
+    {"id":14,"name":"Milly Dragoe","type":"Cleaning Services", "rating":5}
     ],
 "nanny":[
-    {"id":1,"name":"Tiffany Gianelli","type":"Cleaning Services","rating":5},
-    {"id":2,"name":"Dodie Turbard","type":"Cleaning Services","rating":4},
-    {"id":3,"name":"Prentiss Matthiae","type":"Cleaning Services","rating":4},
-    {"id":4,"name":"Milly Dragoe","type":"Cleaning Services","rating":5}
+    {"id":21,"name":"Tiffany Gianelli","type":"Cleaning Services","rating":5},
+    {"id":22,"name":"Dodie Turbard","type":"Cleaning Services","rating":4},
+    {"id":23,"name":"Prentiss Matthiae","type":"Cleaning Services","rating":4},
+    {"id":24,"name":"Milly Dragoe","type":"Cleaning Services","rating":5}
     ],
 "guard":[
-    {"id":1,"name":"Tiffany Gianelli","type":"Cleaning Services","rating":4},
-    {"id":2,"name":"Dodie Turbard","type":"Cleaning Services","rating":5},
-    {"id":3,"name":"Prentiss Matthiae","type":"Cleaning Services","rating":5},
-    {"id":4,"name":"Milly Dragoe","type":"Cleaning Services","rating":5}
+    {"id":31,"name":"Tiffany Gianelli","type":"Cleaning Services","rating":4},
+    {"id":32,"name":"Dodie Turbard","type":"Cleaning Services","rating":5},
+    {"id":33,"name":"Prentiss Matthiae","type":"Cleaning Services","rating":5},
+    {"id":34,"name":"Milly Dragoe","type":"Cleaning Services","rating":5}
    ]
 
 

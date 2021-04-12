@@ -5,10 +5,9 @@ import {Rating, AirbnbRating} from 'react-native-ratings';
 
 import styles from './styles';
 
-export default function CardExplore({name, type, rating, imageUrl,onPress}) {
+export default function CardExplore({name, type, rating, imageUrl}) {
   return (
     <View style={styles.content}>
-      <TouchableOpacity onPress={onPress}>
         <Card style={styles.card}>
           <Card.Cover source={{uri: imageUrl}} style={styles.imgThumb} />
           <Card.Content>
@@ -25,7 +24,6 @@ export default function CardExplore({name, type, rating, imageUrl,onPress}) {
             </Text>
           </Card.Content>
         </Card>
-      </TouchableOpacity>
     </View>
   );
 }

@@ -12,15 +12,17 @@ export default function CategoryOutline({title,onPress}) {
               {
                   title.map((title,i)=>{
                       return (
-                        <TouchableOpacity onPress={()=>onPress(title)}>
-                          <Card style={styles.card} key={i + title.id}>
-                            <Card.Content>
-                              <Title style={styles.title}>
-                                {title.category}
-                              </Title>
-                            </Card.Content>
-                          </Card>
-                        </TouchableOpacity>
+                        <View key={i}>
+                          <TouchableOpacity onPress={() => onPress(title)}>
+                            <Card style={styles.card}>
+                              <Card.Content>
+                                <Title style={styles.title}>
+                                  {title.category}
+                                </Title>
+                              </Card.Content>
+                            </Card>
+                          </TouchableOpacity>
+                        </View>
                       );
                   })
               }

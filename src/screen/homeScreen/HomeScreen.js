@@ -1,19 +1,43 @@
-import React from 'react';
-import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
-import {Searchbar} from 'react-native-paper';
+import React, {Component, useState} from 'react';
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  FlatList,
+  Alert,
+  Modal,
+} from 'react-native';
+import {Button, Searchbar} from 'react-native-paper';
+// import stact navigation
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-
-
-// import 
+// import
 import CategoryList from '../../components/categoryList/CategoryList';
 import CardList from '../../components/cardList/CardList';
-
+import ExploreScreen from '../exploreScreen/ExploreScreen';
 // import dummy data
 import homeDummy from '../../json/homeDummy.json';
 // import styles
 import styles from './styles';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { DetailScreen } from '../index';
 
-export default function Home() {
+const Stack = createStackNavigator();
+
+export default function Home({navigation}) {
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+
+  const handlerCategory =(data) =>{
+    // console.log(data);
+    navigation.push('Explore',data)
+  }
+ 
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -42,8 +66,9 @@ export default function Home() {
               return (
                 <CategoryList
                   key={index}
-                  category={data.category}
+                  category={data.categoryType}
                   image={data.imageUrl}
+                  onPress={() => handlerCategory(data)}
                 />
               );
             })}
@@ -58,14 +83,16 @@ export default function Home() {
             <View>
               {homeDummy.clean.map((data, i) => {
                 return (
-                  <TouchableOpacity>
-                    <CardList
-                      key={i}
-                      name={data.name}
-                      type={data.type}
-                      rating={data.rating}
-                    />
-                  </TouchableOpacity>
+                  <View key={data.id}>
+                    <TouchableOpacity
+                      onPress={() => navigation.push("Detail")}>
+                      <CardList
+                        name={data.name}
+                        type={data.type}
+                        rating={data.rating}
+                      />
+                    </TouchableOpacity>
+                  </View>
                 );
               })}
             </View>
@@ -80,9 +107,15 @@ export default function Home() {
             <View>
               {homeDummy.nanny.map((data, i) => {
                 return (
-                  <TouchableOpacity>
-                    <CardList key={data.id} name={data.name} type={data.type} />
-                  </TouchableOpacity>
+                  <View key={data.id}>
+                    <TouchableOpacity onPress={() =>navigation.push('Detail')}>
+                      <CardList
+                        name={data.name}
+                        type={data.type}
+                        rating={data.rating}
+                      />
+                    </TouchableOpacity>
+                  </View>
                 );
               })}
             </View>
@@ -97,15 +130,24 @@ export default function Home() {
             <View>
               {homeDummy.guard.map((data, i) => {
                 return (
-                  <TouchableOpacity>
-                    <CardList key={data.id} name={data.name} type={data.type} />
-                  </TouchableOpacity>
+                  <View key={data.id}>
+                    <TouchableOpacity>
+                      <CardList
+                        name={data.name}
+                        type={data.type}
+                        rating={data.rating}
+                      />
+                    </TouchableOpacity>
+                  </View>
                 );
               })}
             </View>
           </View>
+          <View style={{marginTop: 100}}></View>
         </ScrollView>
       </View>
+
+      
     </View>
   );
 }
