@@ -4,7 +4,7 @@ import {Card, Title, RadioButton, } from 'react-native-paper';
 import { AirbnbRating } from 'react-native-ratings';
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import NumberFormat from 'react-number-format';
 
 import detailDummy from '../../json/detailDummy.json'
 
@@ -18,8 +18,9 @@ export default function CategoryScreen({route,navigation}) {
 
 
   // const [checked, setChecked] = useState('first');
-   const [isSelected, setIsSelected] = useState({})
+   const [price, setPrice] = useState('')
 
+   console.log(price);
 
   useEffect(() => {
     getData()
@@ -33,6 +34,14 @@ export default function CategoryScreen({route,navigation}) {
     setDataJobs(detailDummy);
   };
   
+
+  const pricing = () =>{
+    data.dataJobs.map((item)=>{
+      if(item.checked == true){
+       
+      }
+    })
+  }
 
  const onChangeValue = (itemSelected,index)=>{
     const newData = dataJobs.map(item =>{
@@ -67,8 +76,9 @@ export default function CategoryScreen({route,navigation}) {
     const filter = dataJobs.filter((item)=>item.checked == true)
     let newItem = ''
     filter.forEach(item=>{
-      newItem = newItem + item.job;
+      newItem = newItem + item.price;
     })
+      setPrice(item.price);
     
     if(newItem.length > 0){
      navigation.navigate('Checkout',dataJobs)
@@ -77,16 +87,17 @@ export default function CategoryScreen({route,navigation}) {
       Alert.alert('Opss', "Silahkan Pilih Kebutuhan terlebih Dahulu")
     }
     
-   
-
   };
 
+ const getPrice = () =>{
 
+ }
 
 
   const renderListItem =() =>{
    return dataJobs.map((item, index) => {
      return (
+       
        <TouchableOpacity key={index} onPress={() => onChangeValue(item, index)}>
          <View style={styles.CheckBoxContainer}>
            <CheckBox
@@ -104,9 +115,15 @@ export default function CategoryScreen({route,navigation}) {
                marginRight: 5,
              }}>
              <Text style={styles.item}>{item.job} </Text>
-             <Text style={styles.itemPrice}>
-               {item.price }
-             </Text>
+             <NumberFormat
+               value={item.price}
+               displayType={'text'}
+               thousandSeparator={true}
+               prefix={'Rp '}
+               renderText={value => (
+                 <Text style={styles.itemPrice}>{value}</Text>
+               )}
+             />
            </View>
          </View>
        </TouchableOpacity>
@@ -114,6 +131,7 @@ export default function CategoryScreen({route,navigation}) {
    });
   }
 
+  
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -155,16 +173,15 @@ export default function CategoryScreen({route,navigation}) {
 
             <View>{renderListItem()}</View>
           </Card>
-         
         </View>
         <View style={{marginBottom: '20%'}}></View>
       </ScrollView>
       <TouchableOpacity
-        onPress={ handlerNavigateToCheckout}
+        onPress={handlerNavigateToCheckout}
         style={styles.btnWrapper}>
         <View style={styles.btnOrder}>
           <Text style={styles.titleBtnOrder}>Order Now</Text>
-          <Text style={styles.titleBtnOrder}>100.000</Text>
+          <Text>123</Text>
         </View>
       </TouchableOpacity>
     </View>
