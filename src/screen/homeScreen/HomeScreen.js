@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -31,10 +31,25 @@ export default function Home({navigation}) {
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  const [dataList, setDataList] = useState([])
+
+  console.log(dataList);
+
+  useEffect(() => {
+    setDataList(homeDummy);
+    return () => {
+      
+    }
+  }, [])
+
+  const handlerDataList = () =>{
+    setDataList(homeDummy)
+  }
+
 
   const handlerCategory =(data) =>{
     // console.log(data);
-    navigation.push('Explore',data)
+    navigation.navigate('Explore',data)
   }
  
 
@@ -85,7 +100,7 @@ export default function Home({navigation}) {
                 return (
                   <View key={data.id}>
                     <TouchableOpacity
-                      onPress={() => navigation.push("Detail")}>
+                      onPress={() => navigation.navigate("Detail")}>
                       <CardList
                         name={data.name}
                         type={data.type}
@@ -108,7 +123,7 @@ export default function Home({navigation}) {
               {homeDummy.nanny.map((data, i) => {
                 return (
                   <View key={data.id}>
-                    <TouchableOpacity onPress={() =>navigation.push('Detail')}>
+                    <TouchableOpacity onPress={() =>navigation.navigate('Detail')}>
                       <CardList
                         name={data.name}
                         type={data.type}

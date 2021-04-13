@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, ScrollView, TextInput, Image, TouchableOpacity, Button } from 'react-native'
 import { Card, DataTable, Paragraph, Title } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -8,12 +8,24 @@ import { DetailsCheckout } from '../../components';
 
 import styles from './styles'
 
-export default function CheckOut() {
+export default function CheckOut({route,navigation}) {
+
 
   const [image,setImage] = useState(null)
   const [images,setImages] = useState(null)
+  const [data,setData] = useState([])
 
-  console.log(image)
+  useEffect(() => {
+    setData(route.params)
+ 
+    return () => {
+      
+    }
+  }, [])
+
+ 
+
+
 
 
   const pickSingleWithCamera =(cropping, mediaType = 'photo') => {
@@ -59,7 +71,7 @@ export default function CheckOut() {
   return (
     <View style={styles.container}>
       <View style={styles.btnBackWrapper}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.goBack()}>
           <Icon name="arrow-back" style={styles.btnBack} />
         </TouchableOpacity>
       </View>
@@ -105,20 +117,14 @@ export default function CheckOut() {
                 </TouchableOpacity>
               </ScrollView>
             </View>
-
-            <DetailsCheckout />
+         
+            <DetailsCheckout data={data} />
+      
+                
           </View>
-          {/* <View style={{alignItems: 'center',justifyContent:'center',marginVertical:10}}>
-            <Text>asdasd</Text>
-            <Image style={{height:300, width:260,resizeMode:"contain"}}
-              source={{
-                uri:
-                  'https://staim-bandung.ac.id/wp-content/uploads/2019/01/bukti-pembayaran-STAIM0002.jpg',
-              }}
-            />
-          </View> */}
+  
 
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={{justifyContent: 'center', alignItems: 'center', marginTop:10}}>
             <ScrollView>{image ? renderAsset(image) : null}</ScrollView>
 
             <TouchableOpacity

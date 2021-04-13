@@ -1,9 +1,11 @@
 import React, { useEffect, useState, } from 'react';
-import {View, Text, TouchableOpacity, ScrollView, Modal} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView, Modal, Alert} from 'react-native';
 import {Card, Title, RadioButton, } from 'react-native-paper';
 import { AirbnbRating } from 'react-native-ratings';
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+
 import detailDummy from '../../json/detailDummy.json'
 
 import styles from './styles';
@@ -12,26 +14,27 @@ import { runOnJS } from 'react-native-reanimated';
 export default function CategoryScreen({route,navigation}) {
 
 
-const [dataJobs, setDataJobs] = useState([]);
-console.log(dataJobs);
-  // const [checked, setChecked] = useState('first');
-   const [isSelected, setSelection] = useState(false);
+  const [dataJobs, setDataJobs] = useState([]);
 
+
+  // const [checked, setChecked] = useState('first');
+   const [isSelected, setIsSelected] = useState({})
 
 
   useEffect(() => {
     getData()
+    
     return () => {
       
     }
   }, [])
 
-  const getData = () =>{
-    setDataJobs(detailDummy)
-  }
+  const getData = dataJobs => {
+    setDataJobs(detailDummy);
+  };
   
 
-  onChangeValue = (itemSelected,index)=>{
+ const onChangeValue = (itemSelected,index)=>{
     const newData = dataJobs.map(item =>{
       if(item.id == itemSelected.id){
         return{
@@ -54,25 +57,57 @@ console.log(dataJobs);
       item.checked == true
     )
     let contentAlert = '';
-    listSelected.forEach(item =>{
-      contentAlert = contentAlert + `${item.id}   `+ item.job + '\n'
+    listSelected.map(item =>{
+      contentAlert = contentAlert + item.job 
     })
    console.log(contentAlert)
   }
 
+  const handlerNavigateToCheckout = () => {
+    const filter = dataJobs.filter((item)=>item.checked == true)
+    let newItem = ''
+    filter.forEach(item=>{
+      newItem = newItem + item.job;
+    })
+    
+    if(newItem.length > 0){
+     navigation.navigate('Checkout',dataJobs)
+    }else{
+
+      Alert.alert('Opss', "Silahkan Pilih Kebutuhan terlebih Dahulu")
+    }
+    
+   
+
+  };
+
+
+
+
   const renderListItem =() =>{
-   return dataJobs.map((j, index) => {
+   return dataJobs.map((item, index) => {
      return (
-       <TouchableOpacity key={index} onPress={() => onChangeValue(j,index)}>
+       <TouchableOpacity key={index} onPress={() => onChangeValue(item, index)}>
          <View style={styles.CheckBoxContainer}>
            <CheckBox
              tintColors={{true: '#FF6F00', false: 'FF6F00'}}
-             value={j.checked}
+             value={item.checked}
              onValueChange={() => {
-               onChangeValue(j, index);
+               onChangeValue(item, index);
              }}
            />
-           <Text style={styles.item}>{j.job}</Text>
+           <View
+             style={{
+               flexDirection: 'row',
+               flex: 1,
+               justifyContent: 'space-between',
+               marginRight: 5,
+             }}>
+             <Text style={styles.item}>{item.job} </Text>
+             <Text style={styles.itemPrice}>
+               {item.price }
+             </Text>
+           </View>
          </View>
        </TouchableOpacity>
      );
@@ -84,7 +119,9 @@ console.log(dataJobs);
       <ScrollView>
         <Card>
           <View style={styles.btnBackWrapper}>
-            <Icon name="arrow-back" style={styles.btnBack} />
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Icon name="arrow-back" style={styles.btnBack} />
+            </TouchableOpacity>
           </View>
           <Card.Cover
             source={{uri: 'https://picsum.photos/700'}}
@@ -118,19 +155,18 @@ console.log(dataJobs);
 
             <View>{renderListItem()}</View>
           </Card>
-          <View style={styles.duration}>
-           
-          </View>
-          
+         
         </View>
         <View style={{marginBottom: '20%'}}></View>
       </ScrollView>
-      <View style={styles.btnWrapper}>
-        <TouchableOpacity onPress={onShowItemSelected} style={styles.btnOrder}>
+      <TouchableOpacity
+        onPress={ handlerNavigateToCheckout}
+        style={styles.btnWrapper}>
+        <View style={styles.btnOrder}>
           <Text style={styles.titleBtnOrder}>Order Now</Text>
           <Text style={styles.titleBtnOrder}>100.000</Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }

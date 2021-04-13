@@ -66,7 +66,7 @@ console.log(data.clean);
     return (
       <>
         <TouchableOpacity 
-        // onPress={() => clickTest(item)}
+        onPress={() => navigation.navigate('Detail')}
         >
           <View style={{backgroundColor:'white'}}>
             <CardExplore

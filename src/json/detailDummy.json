@@ -1,6 +1,6 @@
 [{
-   "id":1,"job":"Membersihkan Halaman"
+   "id":1,"job":"Membersihkan Halaman","price":150000
 },
-{"id":2,"job":"Membersihkan Dalam Rumah"},
-{"id":3,"job":"Membersihkan Closet"}
+{"id":2,"job":"Membersihkan Dalam Rumah","price":250000},
+{"id":3,"job":"Membersihkan Closet","price":150000}
 ]

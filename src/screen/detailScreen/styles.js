@@ -77,7 +77,13 @@ export default StyleSheet.create({
     fontSize: 17,
   },
   item: {
-    fontSize: 16,
+    fontSize: 18,
+    color: '#696969',
+  },
+  itemPrice: {
+    fontSize: 20,
+    color: primary,
+
   },
   btnWrapper: {
     flex: 1,

@@ -5,7 +5,7 @@ import Login from './src/screen/auth/Login'
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {ExploreScreen,DetailScreen, CheckoutScreen} from './src/screen'
+import {ExploreScreen,DetailScreen, CheckoutScreen, ActivityScreen} from './src/screen'
 
 
 export default function App() {
@@ -19,10 +19,11 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Explore" component={ExploreScreen} />
         <Stack.Screen name="Detail" component={DetailScreen} />
+        <Stack.Screen name="Checkout" component={CheckoutScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-  //   <View style={{flex:1}}>
-  //     <CheckoutScreen />
-  //   </View>
+    // <View style={{flex:1}}>
+    //   <ActivityScreen />
+    // </View>
   );
 }
