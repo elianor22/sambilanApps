@@ -15,10 +15,11 @@ export default function CategoryScreen({route,navigation}) {
 
 
   const [dataJobs, setDataJobs] = useState([]);
+  // console.log(dataJobs);
 
 
   // const [checked, setChecked] = useState('first');
-   const [price, setPrice] = useState('')
+   const [price, setPrice] = useState(0)
 
    console.log(price);
 
@@ -30,7 +31,7 @@ export default function CategoryScreen({route,navigation}) {
     }
   }, [])
 
-  const getData = dataJobs => {
+  const getData = (d) => {
     setDataJobs(detailDummy);
   };
   
@@ -61,37 +62,35 @@ export default function CategoryScreen({route,navigation}) {
     setDataJobs(newData)
   }
 
-  const onShowItemSelected = () =>{
-    const listSelected = dataJobs.filter( item =>
-      item.checked == true
-    )
-    let contentAlert = '';
-    listSelected.map(item =>{
-      contentAlert = contentAlert + item.job 
-    })
-   console.log(contentAlert)
-  }
+  // const onShowItemSelected = () =>{
+  //   const listSelected = dataJobs.filter( item =>
+  //     item.checked == true
+  //   )
+  //   let contentAlert = '';
+  //   listSelected.map(item =>{
+  //     contentAlert = contentAlert + item.job 
+  //   })
+  //  console.log(contentAlert)
+  // }
 
   const handlerNavigateToCheckout = () => {
-    const filter = dataJobs.filter((item)=>item.checked == true)
-    let newItem = ''
-    filter.forEach(item=>{
-      newItem = newItem + item.price;
-    })
-      setPrice(item.price);
+    const listSelected = dataJobs.filter(item=> item.checked)
+    let isSelected = ''
     
-    if(newItem.length > 0){
-     navigation.navigate('Checkout',dataJobs)
+    listSelected.forEach(item => {
+      isSelected = isSelected + item.price 
+    })
+    
+
+  
+    if(isSelected.length > 0){
+      navigation.navigate('Checkout',dataJobs)
     }else{
 
-      Alert.alert('Opss', "Silahkan Pilih Kebutuhan terlebih Dahulu")
+      Alert.alert('Gagal', 'Silahkan Pilih Kebutuhan anda')
+
     }
-    
-  };
-
- const getPrice = () =>{
-
- }
+  }
 
 
   const renderListItem =() =>{
