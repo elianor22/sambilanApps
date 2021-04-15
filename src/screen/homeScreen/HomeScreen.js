@@ -8,6 +8,7 @@ import {
   FlatList,
   Alert,
   Modal,
+  Animated
 } from 'react-native';
 import {Button, Searchbar} from 'react-native-paper';
 // import stact navigation
@@ -27,31 +28,26 @@ import { DetailScreen } from '../index';
 
 const Stack = createStackNavigator();
 
-export default function Home({navigation}) {
-
+export default function Home({navigation, userData}) {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const [dataList, setDataList] = useState([])
+  const [dataList, setDataList] = useState([]);
 
-  console.log(dataList);
+  
 
   useEffect(() => {
     setDataList(homeDummy);
-    return () => {
-      
-    }
-  }, [])
+    return () => {};
+  }, []);
 
-  const handlerDataList = () =>{
-    setDataList(homeDummy)
-  }
+  const handlerDataList = () => {
+    setDataList(homeDummy);
+  };
 
-
-  const handlerCategory =(data) =>{
+  const handlerCategory = data => {
     // console.log(data);
-    navigation.navigate('Explore',data)
-  }
- 
+    navigation.navigate('Explore', data);
+  };
 
   return (
     <View style={styles.container}>
@@ -74,7 +70,7 @@ export default function Home({navigation}) {
       </View>
 
       <View style={styles.content}>
-        <ScrollView>
+        <Animated.ScrollView>
           <Text style={styles.title}>Category</Text>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
             {homeDummy.categoryList.map((data, index) => {
@@ -100,7 +96,7 @@ export default function Home({navigation}) {
                 return (
                   <View key={data.id}>
                     <TouchableOpacity
-                      onPress={() => navigation.navigate("Detail")}>
+                      onPress={() => navigation.navigate('Detail')}>
                       <CardList
                         name={data.name}
                         type={data.type}
@@ -123,7 +119,8 @@ export default function Home({navigation}) {
               {homeDummy.nanny.map((data, i) => {
                 return (
                   <View key={data.id}>
-                    <TouchableOpacity onPress={() =>navigation.navigate('Detail')}>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('Detail')}>
                       <CardList
                         name={data.name}
                         type={data.type}
@@ -159,10 +156,8 @@ export default function Home({navigation}) {
             </View>
           </View>
           <View style={{marginTop: 100}}></View>
-        </ScrollView>
+        </Animated.ScrollView>
       </View>
-
-      
     </View>
   );
 }

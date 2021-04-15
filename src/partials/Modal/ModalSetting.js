@@ -1,13 +1,17 @@
 import React from 'react';
-import {View, Text, Devider, TouchableOpacity} from 'react-native';
+import {View, Text, Devider, TouchableOpacity,} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import auth from '@react-native-firebase/auth';
+
 import styles from './styles'
 
 
-export default function ModalSetting({onPress}) {
+export default function ModalSetting({onPress, onSignOut}) {
+ 
+
   return (
     <View style={styles.container}>
-      <View style={{padding: 5,marginVertical:10}}>
+      <View style={{padding: 5, marginVertical: 10}}>
         <Text style={styles.title}>Settings</Text>
       </View>
       <View style={styles.content}>
@@ -15,9 +19,11 @@ export default function ModalSetting({onPress}) {
           <View style={styles.wrapperText}>
             <Text style={styles.subTitle}>Edit Profile</Text>
           </View>
-          <View style={styles.wrapperText}>
-            <Text style={styles.subTitle}>Log Out</Text>
-          </View>
+          <TouchableOpacity onPress={onSignOut}>
+            <View style={styles.wrapperText}>
+              <Text style={styles.subTitle}>Log Out</Text>
+            </View>
+          </TouchableOpacity>
 
           <TouchableOpacity onPress={onPress} style={{marginVertical: 10}}>
             <Text style={{fontSize: 20, color: '#f56262', textAlign: 'center'}}>

@@ -21,10 +21,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 
-export default function Home() {
-
-
-
+export default function Home({extraData}) {
 
   return (
     <SafeAreaProvider>
@@ -39,7 +36,6 @@ export default function Home() {
             bottom: 15,
             height: 60,
             marginHorizontal: '10%',
-         
           },
           labelStyle: {
             fontSize: 13,
@@ -49,14 +45,15 @@ export default function Home() {
         }}>
         <Tab.Screen
           name="home"
-          component={HomeScreen}
+          // component={HomeScreen}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({color, size}) => (
               <Icon name="home" color={color} size={size} />
             ),
-          }}
-        />
+          }}>
+          {props => <HomeScreen {...props} userData={extraData} />}
+        </Tab.Screen>
         {/* <Tab.Screen
             name="category"
             component={ExploreScreen}
@@ -79,14 +76,15 @@ export default function Home() {
         />
         <Tab.Screen
           name="profile"
-          component={ProfileScreen}
+          // component={ProfileScreen}
           options={{
             tabBarLabel: 'Profile',
             tabBarIcon: ({color, size}) => (
               <Icon name="person" color={color} size={size} />
             ),
-          }}
-        />
+          }}>
+          {props => <ProfileScreen {...props} userData={extraData} />}
+        </Tab.Screen>
       </Tab.Navigator>
     </SafeAreaProvider>
   );

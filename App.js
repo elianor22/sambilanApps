@@ -1,14 +1,48 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import Home from './src/container/Home'
-import Login from './src/screen/auth/Login'
+import React, {useEffect, useState} from 'react';
+import {View, Text} from 'react-native';
+import Home from './src/container/Home';
+import Login from './src/screen/auth/Login';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {ExploreScreen,DetailScreen, CheckoutScreen, ActivityScreen} from './src/screen'
+import {
+  ExploreScreen,
+  DetailScreen,
+  CheckoutScreen,
+  ActivityScreen,
+  LoginScreen,
+  RegisterScreen,
+} from './src/screen';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 
 export default function App() {
+  const [user, setUser] = useState(null);
+
+
+
+   useEffect(() => {
+       const usersRef = firestore().collection('users');
+       auth().onAuthStateChanged(user => {
+         if (user) {
+           usersRef
+             .doc(user.uid)
+             .get()
+             .then(document => {
+               const userData = document.data();
+               setUser(userData);
+             })
+             .catch(error => {
+               console.log(error);
+             });
+         }
+       });
+     return () => {
+       usersRef;
+     }
+   }, [])
+
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
@@ -16,14 +50,25 @@ export default function App() {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Explore" component={ExploreScreen} />
-        <Stack.Screen name="Detail" component={DetailScreen} />
-        <Stack.Screen name="Checkout" component={CheckoutScreen} />
+        {user ? (
+          <>
+            <Stack.Screen name="Home">
+              {props => <Home {...props} extraData={user} />}
+            </Stack.Screen>
+            <Stack.Screen name="Explore">
+              {props => <ExploreScreen {...props} extraData={user} />}
+            </Stack.Screen>
+            <Stack.Screen name="Detail" component={DetailScreen} />
+            <Stack.Screen name="Checkout" component={CheckoutScreen} />
+            <Stack.Screen name="login" component={LoginScreen} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="login" component={LoginScreen} />
+            <Stack.Screen name="register" component={RegisterScreen} />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
-    // <View style={{flex:1}}>
-    //   <ActivityScreen />
-    // </View>
   );
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -9,22 +9,62 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
 } from 'react-native';
 import { Card } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 import Modal from 'react-native-modal';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+
+
 
 import {Devider, ModalSetting } from '../../partials'
 
 const windowWidth = Dimensions.get('window').width;
-export default function ProfileScreen() {
+export default function ProfileScreen({navigation, userData}) {
 
   const [isModalVisible, setModalVisible] = useState(false);
+  const [user,setUser]= useState(null)
+  console.log(user);
+
 
   const [image, setImage] = useState(
     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
   );
+
+
+    useEffect(() => {
+      const usersRef = firestore().collection('users');
+       auth().onAuthStateChanged(user => {
+         if(user){
+           usersRef.doc(user.uid)
+           .get()
+           .then(data=>{
+             const dataUser = data.data()
+
+             setUser(dataUser);
+           })
+           .catch(err=>{
+             console.log(err);
+           })
+         }
+       });
+      return () => {
+        usersRef
+      }
+    }, [])
+
+const signOut = () => {
+  auth()
+    .signOut()
+    .then(() => {
+      navigation.navigate('login');
+      console.log('User signed out!');
+    });
+};
+
 
   return (
     <View style={styles.container}>
@@ -96,9 +136,7 @@ export default function ProfileScreen() {
             transparent={true}
             style={{width: '100%', margin: 0}}>
             <View style={{flex: 1, justifyContent: 'flex-end'}}>
-              <ModalSetting onPress={() => setModalVisible(!isModalVisible)} />
-
-              
+              <ModalSetting onPress={() => setModalVisible(!isModalVisible)} onSignOut={signOut}/>
             </View>
           </Modal>
         </View>
