@@ -12,6 +12,8 @@ import {
   ActivityScreen,
   LoginScreen,
   RegisterScreen,
+  SplashScreen,
+  SuccessScreen,
 } from './src/screen';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -19,8 +21,9 @@ import firestore from '@react-native-firebase/firestore';
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-
+  console.log('isloading', isLoading);
 
    useEffect(() => {
        const usersRef = firestore().collection('users');
@@ -31,44 +34,60 @@ export default function App() {
              .get()
              .then(document => {
                const userData = document.data();
+               
                setUser(userData);
-             })
-             .catch(error => {
-               console.log(error);
-             });
+              })
+              .catch(error => {
+                console.log(error);
+              });
+            
          }
        });
+       setInterval(function () {
+         setIsLoading(false)
+       }, 3000);
+
      return () => {
-       usersRef;
+       setInterval()
      }
    }, [])
 
   const Stack = createStackNavigator();
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        {user ? (
-          <>
-            <Stack.Screen name="Home">
-              {props => <Home {...props} extraData={user} />}
-            </Stack.Screen>
-            <Stack.Screen name="Explore">
-              {props => <ExploreScreen {...props} extraData={user} />}
-            </Stack.Screen>
-            <Stack.Screen name="Detail" component={DetailScreen} />
-            <Stack.Screen name="Checkout" component={CheckoutScreen} />
-            <Stack.Screen name="login" component={LoginScreen} />
-          </>
-        ) : (
-          <>
-            <Stack.Screen name="login" component={LoginScreen} />
-            <Stack.Screen name="register" component={RegisterScreen} />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      {isLoading ? (
+        <View style={{flex: 1, backgroundColor: 'white'}}>
+          <SplashScreen />
+        </View>
+      ) : (
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}>
+            {user ? (
+              <>
+                <Stack.Screen name="Home">
+                  {props => <Home {...props} extraData={user} />}
+                </Stack.Screen>
+                <Stack.Screen name="Explore">
+                  {props => <ExploreScreen {...props} extraData={user} />}
+                </Stack.Screen>
+                <Stack.Screen name="Detail" component={DetailScreen} />
+                <Stack.Screen name="Checkout" component={CheckoutScreen} />
+                <Stack.Screen name="Success" component={SuccessScreen} />
+                <Stack.Screen name="login" component={LoginScreen} />
+                <Stack.Screen name="register" component={RegisterScreen} />
+              </>
+            ) : (
+              <>
+                <Stack.Screen name="login" component={LoginScreen} />
+              </>
+            )}
+          </Stack.Navigator>
+        </NavigationContainer>
+      )}
+    </>
   );
 }

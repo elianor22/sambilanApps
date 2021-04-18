@@ -25,6 +25,7 @@ import homeDummy from '../../json/homeDummy.json';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { DetailScreen } from '../index';
+import axios from 'axios';
 
 const Stack = createStackNavigator();
 
@@ -32,22 +33,42 @@ export default function Home({navigation, userData}) {
   const [modalVisible, setModalVisible] = useState(false);
 
   const [dataList, setDataList] = useState([]);
+  const [ categories, setCategories] = useState(null)
 
+  console.log(categories);
   
 
   useEffect(() => {
-    setDataList(homeDummy);
+    // setDataList(homeDummy);
+    getDataApi()
     return () => {};
   }, []);
 
   const handlerDataList = () => {
-    setDataList(homeDummy);
+    // setDataList(homeDummy);
   };
 
   const handlerCategory = data => {
     // console.log(data);
     navigation.navigate('Explore', data);
   };
+
+const BASE_URL = 'https://dummyapi.io/data/api';
+const APP_ID = '606dee664d17310528ac843d';
+  const getDataApi = ()=>{
+
+  axios
+     axios
+       .get(`${BASE_URL}/user`, {headers: {'app-id': APP_ID}})
+       .then((result)=>{
+        console.log(result);
+       })
+       .catch(err =>{
+         console.log(err);
+       })
+      
+
+  }
 
   return (
     <View style={styles.container}>

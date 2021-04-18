@@ -138,7 +138,7 @@ export default function CheckOut({route,navigation}) {
 
         <View style={{marginBottom: '20%'}}></View>
       </ScrollView>
-      <TouchableOpacity style={styles.btnWrapper}>
+      <TouchableOpacity style={styles.btnWrapper} onPress={()=>navigation.navigate('Success')}>
         <View style={styles.btnOrder}>
           <Text style={styles.titleBtnOrder}>Order</Text>
         </View>

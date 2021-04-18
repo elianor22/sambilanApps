@@ -1,13 +1,11 @@
 import {StyleSheet} from 'react-native';
-
-
 const primary = '#FF6F00';
+
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    // backgroundColor: primary,
- 
+    backgroundColor: '#FFAC6B',
   },
   content: {
     backgroundColor: 'white',
@@ -36,7 +34,7 @@ export default StyleSheet.create({
     borderWidth: 0.2,
   },
   button: {
-    backgroundColor: '#788eec',
+    backgroundColor: primary,
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,

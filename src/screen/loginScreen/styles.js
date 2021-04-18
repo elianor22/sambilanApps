@@ -1,9 +1,13 @@
 import {StyleSheet} from 'react-native';
+const primary = '#FF6F00';
+
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    backgroundColor: '#FFAC6B',
+    justifyContent:'center',
+    alignItems:'center'
   },
   title: {},
   logo: {
@@ -27,7 +31,7 @@ export default StyleSheet.create({
     borderWidth: 0.2,
   },
   button: {
-    backgroundColor: '#788eec',
+    backgroundColor: primary,
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,

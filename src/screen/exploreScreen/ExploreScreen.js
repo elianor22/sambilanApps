@@ -22,7 +22,7 @@ export default function ExploreScreen({route,navigation}) {
 
 const [data] = useState(route.params)
 
-console.log(data.clean);
+// console.log(data.clean);
 
   // const [endpoint, setEndpoint] = useState('user');
   // const [data, setData] = useState(exploreDummy.clean);

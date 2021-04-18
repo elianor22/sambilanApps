@@ -23,6 +23,8 @@ import firestore from '@react-native-firebase/firestore';
 import {Devider, ModalSetting } from '../../partials'
 
 const windowWidth = Dimensions.get('window').width;
+
+
 export default function ProfileScreen({navigation, userData}) {
 
   const [isModalVisible, setModalVisible] = useState(false);
@@ -52,16 +54,19 @@ export default function ProfileScreen({navigation, userData}) {
          }
        });
       return () => {
-        usersRef
+        usersRef()
+        modal()
       }
     }, [])
+
+     const modal = () => isModalVisible(false);
 
 const signOut = () => {
   auth()
     .signOut()
     .then(() => {
-      navigation.navigate('login');
-      console.log('User signed out!');
+      navigation.push('login');
+      console.log(auth);
     });
 };
 
@@ -80,26 +85,7 @@ const signOut = () => {
         <Devider width={12} />
 
         <View>
-          <ScrollView horizontal>
-            <View style={styles.orderHistoryContainer}>
-              <TouchableOpacity>
-                <Card style={styles.orderHistory}>
-                  <Text style={styles.titleOrder}>Order Baru</Text>
-                  <Text style={styles.subTitleOrder}>
-                    Makin mempermudah hidupmu
-                  </Text>
-                </Card>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Card style={styles.orderHistory}>
-                  <Text style={styles.titleOrder}>Order History</Text>
-                  <Text style={styles.subTitleOrder}>
-                    Yuk lihat semua history pesanan kamu :
-                  </Text>
-                </Card>
-              </TouchableOpacity>
-            </View>
-          </ScrollView>
+         
         </View>
         <View style={styles.profileContainer}>
           <Card style={styles.shadow}>

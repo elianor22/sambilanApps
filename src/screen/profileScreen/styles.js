@@ -57,9 +57,9 @@ export default StyleSheet.create({
     marginVertical: 15,
   },
   profileWrapper: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     padding: 5,
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     marginHorizontal: 10,
   },
   title: {
