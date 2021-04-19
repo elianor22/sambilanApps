@@ -39,8 +39,7 @@ export default function Home({navigation, userData}) {
   
 
   useEffect(() => {
-    // setDataList(homeDummy);
-    getDataApi()
+    setDataList(homeDummy);
     return () => {};
   }, []);
 
@@ -53,19 +52,8 @@ export default function Home({navigation, userData}) {
     navigation.navigate('Explore', data);
   };
 
-const BASE_URL = 'https://dummyapi.io/data/api';
-const APP_ID = '606dee664d17310528ac843d';
   const getDataApi = ()=>{
 
-  axios
-     axios
-       .get(`${BASE_URL}/user`, {headers: {'app-id': APP_ID}})
-       .then((result)=>{
-        console.log(result);
-       })
-       .catch(err =>{
-         console.log(err);
-       })
       
 
   }
@@ -91,7 +79,7 @@ const APP_ID = '606dee664d17310528ac843d';
       </View>
 
       <View style={styles.content}>
-        <Animated.ScrollView>
+        <Animated.ScrollView >
           <Text style={styles.title}>Category</Text>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={true}>
             {homeDummy.categoryList.map((data, index) => {

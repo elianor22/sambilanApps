@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 import {Card, DataTable, Paragraph, Title} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
+import NumberFormat from 'react-number-format';
+
+
 import styles from './styels';
 export default function DetailsCheckout({data}) {
   
@@ -18,6 +21,29 @@ export default function DetailsCheckout({data}) {
 
 
   const filteringHandler = () => {};
+
+
+  const handlePrice = () =>{
+    const listPrice = item.filter(item => item.checked);
+    let isTotal = 0;
+
+    listPrice.forEach(item => {
+      isTotal = isTotal + item.price +16000;
+    });
+    console.log(isTotal);
+    
+    return (
+      <NumberFormat
+        value={isTotal}
+        displayType={'text'}
+        thousandSeparator={true}
+        prefix={'Rp '}
+        renderText={value => <Title > Total {value}</Title>}
+      />
+    );
+    
+    
+  }
 
   return (
     <Card style={styles.paymentContent}>
@@ -42,11 +68,11 @@ export default function DetailsCheckout({data}) {
         <View style={styles.details}>
           <Text style={styles.itemDetails}>Jasa :</Text>
           <View style={styles.listDetails}>
-            {item.map((data,i) => {
+            {item.map((data, i) => {
               if (data.checked == true) {
                 return (
-                  <View key={`${i}`+`${data.job}`}>
-                  <Text style={styles.itemDetails} >{data.job}</Text>
+                  <View key={`${i}` + `${data.job}`}>
+                    <Text style={styles.itemDetails}>{data.job}</Text>
                   </View>
                 );
               }
@@ -56,8 +82,23 @@ export default function DetailsCheckout({data}) {
         <View style={styles.details}>
           <Text style={styles.itemDetails}>Harga:</Text>
           <View style={styles.listDetails}>
-            <Text style={styles.itemDetails}>Rp 200.000</Text>
-            <Text style={styles.itemDetails}>Rp 149.000</Text>
+            {item.map((data, i) => {
+              if (data.checked == true) {
+                return (
+                  <View key={`${i}` + `${data.price}`}>
+                    <NumberFormat
+                      value={data.price}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      prefix={'Rp '}
+                      renderText={value => (
+                        <Text style={styles.itemDetails}>{value}</Text>
+                      )}
+                    />
+                  </View>
+                );
+              }
+            })}
           </View>
         </View>
         <View
@@ -66,8 +107,14 @@ export default function DetailsCheckout({data}) {
             alignItems: 'center',
             marginTop: 20,
           }}>
-          <Paragraph>Fee 16000</Paragraph>
-          <Title>Total Bayar : Rp 365.000</Title>
+          <Paragraph style={{color: 'tomato'}}>Fee 16000</Paragraph>
+          {
+           
+           handlePrice()
+
+          
+          }
+            {/* <Title>Total Bayar : Rp {data.price}</Title> */}
         </View>
       </View>
     </Card>

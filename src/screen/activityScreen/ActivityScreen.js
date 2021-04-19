@@ -34,17 +34,7 @@ const [activity, setActivity] = useState ('aaa')
                   style={{flexDirection: 'row'}}
                 />
               </Card>
-              <Card style={styles.cardItem}>
-                <Text style={styles.title}>Siskaeee e nya3</Text>
-                <Text style={styles.subTitle}>12/4/2021</Text>
-                <AirbnbRating
-                  showRating={false}
-                  count={11}
-                  defaultRating={9}
-                  size={24}
-                  style={{flexDirection: 'row'}}
-                />
-              </Card>
+              
             </>
           ) : (
             <>

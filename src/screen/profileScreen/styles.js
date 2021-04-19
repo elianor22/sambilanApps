@@ -13,14 +13,13 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     padding: 10,
     marginTop: -10,
-    flex: 1,
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
   },
   imgProfile: {
-    width: '100%', 
+    width: '100%',
     height: 240,
-    resizeMode:'cover'
+    resizeMode: 'cover',
   },
   imgWrapper: {
     flex: 1,
@@ -69,6 +68,16 @@ export default StyleSheet.create({
   subTitle: {
     fontSize: 16,
     color: 'black',
+    borderWidth: 0.3,
+    borderRadius: 4,
+    borderColor: '#a1a1a1',
+  },
+  subTitleActive: {
+    fontSize: 16,
+    color: 'black',
+    borderWidth: 0.7,
+    borderRadius: 4,
+    borderColor: '#5bf593',
   },
 
   shadow: {
@@ -88,4 +97,26 @@ export default StyleSheet.create({
     padding: 10,
   },
   address: {borderWidth: 1, borderColor: '#f6f6f6', padding: 5},
+  btnSaveWrapper: {},
+  btnSave: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+  titleSave: {
+    color: 'white',
+    fontSize: 16,
+    backgroundColor: primary,
+    padding: 10,
+    paddingHorizontal: 20,
+    borderRadius: 50,
+  },
+  titleCancel: {
+    color: 'white',
+    fontSize: 16,
+    backgroundColor: '#db3f30',
+    padding: 10,
+    paddingHorizontal: 20,
+    borderRadius: 50,
+  },
 });

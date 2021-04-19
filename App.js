@@ -83,6 +83,7 @@ export default function App() {
             ) : (
               <>
                 <Stack.Screen name="login" component={LoginScreen} />
+                <Stack.Screen name="register" component={RegisterScreen} />
               </>
             )}
           </Stack.Navigator>

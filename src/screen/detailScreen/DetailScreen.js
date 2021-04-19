@@ -21,7 +21,7 @@ export default function CategoryScreen({route,navigation}) {
   // const [checked, setChecked] = useState('first');
    const [price, setPrice] = useState(0)
 
-   console.log(price);
+  //  console.log(price);
 
   useEffect(() => {
     getData()
@@ -76,12 +76,14 @@ export default function CategoryScreen({route,navigation}) {
   const handlerNavigateToCheckout = () => {
     const listSelected = dataJobs.filter(item=> item.checked)
     let isSelected = ''
-    
+  
     listSelected.forEach(item => {
-      isSelected = isSelected + item.price 
+      isSelected = isSelected + item.job 
+      
     })
+    console.log(isSelected);
     
-
+    // setPrice(isSelected)
   
     if(isSelected.length > 0){
       navigation.navigate('Checkout',dataJobs)
@@ -92,6 +94,25 @@ export default function CategoryScreen({route,navigation}) {
     }
   }
 
+   const handlePrice = () => {
+     const listPrice = dataJobs.filter(item => item.checked);
+     let isTotal = 0;
+
+     listPrice.forEach(item => {
+       isTotal += item.price ;
+     });
+     console.log(isTotal);
+
+     return (
+       <NumberFormat
+         value={isTotal}
+         displayType={'text'}
+         thousandSeparator={true}
+         prefix={'Rp '}
+         renderText={value => <Text style={styles.titleBtnOrder}>  {value}</Text >}
+       />
+     );
+   };
 
   const renderListItem =() =>{
    return dataJobs.map((item, index) => {
@@ -180,7 +201,8 @@ export default function CategoryScreen({route,navigation}) {
         style={styles.btnWrapper}>
         <View style={styles.btnOrder}>
           <Text style={styles.titleBtnOrder}>Order Now</Text>
-          <Text>123</Text>
+          {handlePrice()}
+          {/* <Text>123</Text> */}
         </View>
       </TouchableOpacity>
     </View>
